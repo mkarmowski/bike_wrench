@@ -7,8 +7,8 @@
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="../static/css/styles.css" media="screen" type="text/css" rel="stylesheet" />
-  <!--<link href="{% static 'css/styles.css' %}?version=1" media="screen" type="text/css" rel="stylesheet" />-->
+  <!--<link href="../static/css/styles.css" media="screen" type="text/css" rel="stylesheet" />-->
+  <link href="{% static 'css/styles.css' %}?version=1" media="screen" type="text/css" rel="stylesheet" />
 </head>
 <body>
 
@@ -26,7 +26,10 @@
   </section>
 
   <hr class="s1">
-  {% block content %}{% endblock %}
+  <section>
+    {% block content %}{% endblock %}
+  </section>
+
 
 </body>
 </html>
