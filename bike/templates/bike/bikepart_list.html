@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Bike Part List{% endblock %}
+
+{% block content %}
+<h1>Your bike parts</h1>
+
+<div class="list">
+    {% for bike_part in bike_parts %}
+    <div class="list-details">
+        <strong><a href="{{ bike_part.get_absolute_url }}">{{ bike_part.name }}</a></strong><br>
+        Type: {{ bike_part.type }}<br>
+        Bike mounted to: {{ bike_part.bike_mounted }}<br>
+        Mileage: {{ bike_part.mileage }}
+    </div><br>
+    {% endfor %}
+</div>
+{% endblock %}

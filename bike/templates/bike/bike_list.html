@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Bikes List{% endblock %}
+
+{% block content %}
+<h1>Your bikes</h1>
+
+<div class="list">
+    {% for bike in bikes %}
+    <div class="list-details">
+        <strong><a href="{{ bike.get_absolute_url }}">{{ bike.name }}</a></strong><br>
+        Brand: {{ bike.brand }}<br>
+        Model: {{ bike.model }}<br>
+        Mileage: {{ bike.mileage }}
+    </div><br>
+    {% endfor %}
+</div>
+{% endblock %}

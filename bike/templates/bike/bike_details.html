@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Bike: {{ bike.name }}{% endblock %}
+
+{% block content %}
+    <div class="details">
+        <p>
+            <h2><strong>{{ bike.name }}</strong></h2>
+            <strong>Brand:</strong> {{ bike.brand }}<br>
+            <strong>Model:</strong> {{ bike.model }}<br>
+            <strong>Mileage:</strong> {{ bike.mileage }}<br>
+            <strong>Description:</strong> {{ bike.description }}<br>
+        </p>
+    </div><br>
+
+    <div class="parts">
+        <p>
+            <h2>Parts mounted:</h2>
+            {% for bike_part in bike_parts %}
+                <strong>{{ bike_part.type }}</strong>: <a href="{{ bike_part.get_absolute_url }}">{{ bike_part.name }}</a><br>
+            {% endfor %}
+        </p>
+    </div>
+{% endblock %}

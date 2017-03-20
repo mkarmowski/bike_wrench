@@ -31,10 +31,14 @@ class Bike(models.Model):
 class BikePart(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     type = models.CharField(choices=BIKE_PARTS_TYPES, max_length=100)
+    brand = models.CharField(max_length=100, null=True)
+    model = models.CharField(max_length=100, null=True)
     mileage = models.DecimalField(max_digits=12, decimal_places=2)
+    user = user = models.ForeignKey(User, related_name='bikepart')
     bike_mounted = models.ForeignKey(Bike, related_name='parts')
     mount_date = models.DateField()
     last_service_date = models.DateField()
+    description = models.TextField(max_length=1000, blank=True, null=True)
 
     class Meta:
         ordering = ('name',)
@@ -43,5 +47,5 @@ class BikePart(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('bike:part_details', args=[self.id])
+        return reverse('bike:bikepart_details', args=[self.id])
 

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Bike Part: {{ bike_part.name }}{% endblock %}
+
+{% block content %}
+    <div class="details">
+        <p>
+            <h2><strong>{{ bike_part.name }}</strong></h2>
+            <strong>Type:</strong> {{ bike_part.type }}<br>
+            <strong>Brand:</strong> {{ bike_part.brand }}<br>
+            <strong>Model:</strong> {{ bike_part.model }}<br>
+            <strong>Mileage:</strong> {{ bike_part.mileage }}<br>
+            <strong>Description:</strong> {{ bike_part.description }}<br>
+        </p>
+    </div><br>
+{% endblock %}
