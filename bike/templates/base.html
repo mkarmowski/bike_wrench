@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="Author" content="" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="../static/css/styles.css" media="screen" type="text/css" rel="stylesheet" />
+  <!--<link href="{% static 'css/styles.css' %}?version=1" media="screen" type="text/css" rel="stylesheet" />-->
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><img src="../static/images/placeholder-icon.svg" width="16px" height="16px" alt="Home"><a href="#">Home</a></li>
+      <li><img src="../static/images/placeholder-icon.svg" width="16px" height="16px" alt="About"><a href="#">About</a></li>
+      <li><img src="../static/images/placeholder-icon.svg" width="16px" height="16px" alt="Work"><a href="#">Work</a></li>
+      <li><img src="../static/images/placeholder-icon.svg" width="16px" height="16px" alt="Contact"><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="title">
+    <h1>Bike Wrench</h1>
+  </section>
+
+  <hr class="s1">
+  {% block content %}{% endblock %}
+
+</body>
+</html>
