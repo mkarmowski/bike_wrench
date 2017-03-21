@@ -10,4 +10,7 @@ urlpatterns = [
     url(r'^bike/update/(?P<pk>\d+)/$', views.BikeUpdate.as_view(), name='bike_update'),
     url(r'^bikepart/list/$', views.bikepart_list, name='bikepart_list'),
     url(r'^bikepart/detail/(?P<id>\d+)/$', views.bikepart_details, name='bikepart_details'),
+    url(r'^bikepart/create/$', views.bikepart_create, name='bikepart_create'),
+    url(r'^bikepart/delete/(?P<pk>\d+)/$', views.BikepartDelete.as_view(), name='bikepart_delete'),
+    url(r'^bikepart/update/(?P<pk>\d+)/$', views.BikepartUpdate.as_view(), name='bikepart_update'),
 ]

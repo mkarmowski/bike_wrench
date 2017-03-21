@@ -5,6 +5,12 @@
 {% block content %}
 <h1>Your bike parts</h1>
 
+<div>
+    <p>
+        <a href="{% url 'bike:bikepart_create' %}">Add a new bikepart</a>
+    </p>
+</div>
+
 <div class="list">
     {% for bike_part in bike_parts %}
     <div class="list-details">

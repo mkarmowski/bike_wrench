@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Bikepart added{% endblock %}
+
+{% block content %}
+    <h1>Bikepart added successfully!</h1>
+    <p>Your new bikepart has been added.
+        <p><a href="{% url 'bike:bikepart_create' %}">Add another bikepart</a></p><br>
+        <p><a href="{% url 'bike:bikepart_list' %}">Go back to bikeparts list</a></p>
+    </p>
+{% endblock %}

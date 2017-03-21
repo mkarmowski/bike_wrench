@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import DeleteView, UpdateView
 
-from bike.forms import BikeCreateForm
+from bike.forms import BikeCreateForm, BikepartCreateForm
 from bike.models import Bike, BikePart
 
 
@@ -34,7 +34,7 @@ def bike_create(request):
             return render(request, 'bike/bike_create_done.html')
     else:
         bike_create_form = BikeCreateForm()
-    return render(request, 'bike/create.html', {'bike_form': bike_create_form})
+    return render(request, 'bike/bike_create.html', {'bike_form': bike_create_form})
 
 
 class BikeDelete(DeleteView):
@@ -68,3 +68,39 @@ def bikepart_list(request):
 def bikepart_details(request, id):
     bike_part = get_object_or_404(BikePart, id=id)
     return render(request, 'bike/bikepart_details.html', {'bike_part': bike_part})
+
+
+@login_required
+def bikepart_create(request):
+    current_user = request.user
+    if request.method == 'POST':
+        bikepart_create_form = BikepartCreateForm(current_user, request.POST)
+        if bikepart_create_form.is_valid():
+            new_bikepart = bikepart_create_form.save(commit=False)
+            new_bikepart.user = request.user
+            new_bikepart.save()
+            return render(request, 'bike/bikepart_create_done.html')
+    else:
+        bikepart_create_form = BikepartCreateForm(current_user)
+    return render(request, 'bike/bikepart_create.html', {'bikepart_form': bikepart_create_form})
+
+
+class BikepartDelete(DeleteView):
+    model = BikePart
+    template_name = 'bike/bikepart_confirm_delete.html'
+    success_url = reverse_lazy('bike:bikepart_list')
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BikepartDelete, self).dispatch(*args, **kwargs)
+
+
+class BikepartUpdate(UpdateView):
+    model = BikePart
+    fields = ['name', 'type', 'brand', 'model', 'mileage', 'bike_mounted',
+              'mount_date', 'last_service_date', 'description']
+    template_name = 'bike/bikepart_update.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(BikepartUpdate, self).dispatch(*args, **kwargs)
