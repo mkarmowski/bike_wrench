@@ -95,7 +95,7 @@ nav{
   height: auto;
   min-width: 60px;
   width: 60px;
-  background-color: #ccc;
+  background-color: #9ED29E;
 
   transition-delay: 0s;
   transition-duration: 0.4s;
@@ -110,7 +110,7 @@ nav:hover{
   bottom: 0;
   height: auto;
   width: 180px;
-  background-color: #9ED29E;
+  background-color: #51b551;
 }
 
 nav a{
